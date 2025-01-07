@@ -1,0 +1,73 @@
+<!-- views/foods/edit.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <title>Editing <%= food.name %></title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <div class="edit-body">
+            <h1>Edit <%= food.name %> - <%= food.category%>
+            </h1>
+            <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" value="<%= food.name %>">
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" value="<%= food.quantity %>">
+
+                <label for="unit">Unit:</label>
+                <select id="unit" name="unit">
+                    <option value="kg" <%=food.unit==="kg" ? "selected" : "" %>>Kilograms</option>
+                    <option value="grams" <%=food.unit==="grams" ? "selected" : "" %>>Grams</option>
+                    <option value="liters" <%=food.unit==="liters" ? "selected" : "" %>>Liters</option>
+                    <option value="milligrams" <%=food.unit==="milligrams" ? "selected" : "" %>>Milligrams</option>
+                </select> 
+                
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="fruits" <%=food.category==="fruits" ? "selected" : "" %>
+                        >
+                        Fruits
+                    </option>
+                    <option value="vegetables" <%=food.category==="vegetables" ? "selected" : "" %>
+                        >
+                        Vegetables
+                    </option>
+                    <option value="dairy" <%=food.category==="dairy" ? "selected" : "" %>
+                        >
+                        Dairy
+                    </option>
+                    <option value="meat" <%=food.category==="meat" ? "selected" : "" %>
+                        >
+                        Meat
+                    </option>
+                    <option value="grains" <%=food.category==="grains" ? "selected" : "" %>
+                        >
+                        Grains
+                    </option>
+                    <option value="beverages" <%=food.category==="beverages" ? "selected" : "" %>
+                        >
+                        Beverages
+                    </option>
+                    <option value="snacks" <%=food.category==="snacks" ? "selected" : "" %>
+                        >
+                        Snacks
+                    </option>
+                    <option value="condiments" <%=food.category==="condiments" ? "selected" : "" %>
+                        >
+                        Condiments
+                    </option>
+                </select>
+                <button type="submit">Update Food Item</button>
+            </form>
+</body>
+
+</html>

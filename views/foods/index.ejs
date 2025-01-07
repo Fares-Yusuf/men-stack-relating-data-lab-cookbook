@@ -1,0 +1,40 @@
+<!-- foods/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <title>Your Pantry</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <!-- views/foods/index.ejs -->
+
+        <div class="all-apps-body">
+            <div class="all-apps-header">
+                <h1>Your Pantry</h1>
+                <a class="add-app-link" href="/users/<%=user._id%>/foods/new">Add a Food Iteam</a>
+            </div>
+            <% if (pantryItems.length> 0) { %>
+                <ul>
+                    <% pantryItems.forEach((food)=>{ %>
+                        <a href="/users/<%= user._id %>/foods/<%= food._id %>">
+                            <li>
+                                <%= food.name %> - Category: <%= food.category %> - Quantity: <%= food.quantity %>
+                            </li>
+                        </a>
+                        <% }) %>
+                </ul>
+                <% } else { %>
+                    <p>There are no items in this pantry.</p>
+                    <% } %>
+
+        </div>
+</body>
+
+</html>

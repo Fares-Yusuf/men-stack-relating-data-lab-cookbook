@@ -1,6 +1,25 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const foodSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    default: 1
+  },
+  unit: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String
+  }
+});
+
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -9,7 +28,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  pantry: [foodSchema]
 });
+
+
 
 const User = mongoose.model('User', userSchema);
 
